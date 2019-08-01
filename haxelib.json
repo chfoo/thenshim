@@ -1,0 +1,13 @@
+{
+    "name": "thenshim",
+    "url" : "https://github.com/chfoo/thenshim/",
+    "license": "MIT",
+    "tags": ["promise", "async"],
+    "description": "Adapter/shim for cross-target JavaScript-style ('thenable') promises",
+    "version": "0.1.0",
+    "classPath": "src/",
+    "releasenote": "First release",
+    "contributors": ["chfoo"],
+    "dependencies": {
+    }
+}

@@ -1,0 +1,25 @@
+dist: xenial
+
+language: haxe
+
+haxe:
+  - "4.0.0-rc.3"
+
+before_install:
+  - ./script/travis_install_hashlink.sh
+
+install:
+  - yes | haxelib install hxcpp
+  - yes | haxelib install hashlink
+  - yes | haxelib install test.hxml
+  - npm install promises-aplus-tests
+
+script:
+  - haxe hxml/test.cpp.hxml
+  - haxe hxml/test.hl.hxml
+  - haxe hxml/test.js.hxml
+  - haxe hxml/test_adapter.js.hxml
+  - ./out/cpp/TestAll-debug
+  - hl out/hl/test.hl
+  - nodejs out/js/test.js
+  - nodejs node_modules/promises-aplus-tests/lib/cli.js out/js/test_adapter.js

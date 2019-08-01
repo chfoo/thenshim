@@ -1,0 +1,7 @@
+libs.hxml
+-cp src/
+-cp test/
+-debug
+-D thenshim_always_fallback
+-js out/js/test_adapter.js
+thenshim.PAPTestAdapter

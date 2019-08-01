@@ -1,0 +1,9 @@
+# compiled output
+out/
+
+# npm
+package-lock.json
+node_modules/
+
+# vscode
+.vscode/

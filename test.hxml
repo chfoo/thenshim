@@ -1,0 +1,7 @@
+libs.hxml
+-lib utest
+-cp src/
+-cp test/
+-debug
+--macro nullSafety("thenshim", Loose)
+-main thenshim.TestAll
