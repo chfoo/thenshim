@@ -6,6 +6,7 @@ haxe:
   - "4.0.0-rc.3"
 
 before_install:
+  - sudo apt-get install -y nodejs
   # install hashlink
   - sudo apt-get install -y libcairo2 libpng-dev libjpeg-turbo8-dev libturbojpeg libvorbis-dev libopenal-dev libsdl2-dev libmbedtls-dev libuv1-dev
   - sudo ln -s /usr/lib/x86_64-linux-gnu/libturbojpeg.so.0.1.0 /usr/lib/x86_64-linux-gnu/libturbojpeg.so
@@ -23,6 +24,6 @@ script:
   - haxe hxml/test.js.hxml
   - haxe hxml/test_adapter.js.hxml
   - ./out/cpp/TestAll-debug
-  - hl out/hl/test.hl
+  - LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH" hl out/hl/test.hl
   - nodejs out/js/test.js
   - nodejs node_modules/promises-aplus-tests/lib/cli.js out/js/test_adapter.js
