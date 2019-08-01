@@ -1,6 +1,6 @@
 # Thenshim
 
-Thenshim is an adapter/shim for cross-target JavaScript-style ("thenable") promises. On the JS target, it uses the native Promise object. On other targets, a fallback implementation is used. The fallback implementation is [Promises/A+](https://promisesaplus.com/) compliant.
+Thenshim is an adapter/shim for cross-target JavaScript-style ("thenable") promises for Haxe. On the JS target, it uses the native Promise object. On other targets, a fallback implementation is used. The fallback implementation is [Promises/A+](https://promisesaplus.com/) compliant.
 
 Thenshim is intended for applications or libraries that want to use JavaScript-style promises across targets. For more feature-rich asynchronous functionality, such as cancellation, consider using a different library. (You can search on [Haxelib](https://lib.haxe.org/) to find various libraries that best suit your project.)
 
