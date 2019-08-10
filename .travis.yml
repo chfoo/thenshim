@@ -21,7 +21,7 @@ install:
 script:
   - haxe hxml/test.cpp.hxml
   - haxe hxml/test.hl.hxml
-  - haxe hxml/test.js.hxml
+  - haxe hxml/test.js.hxml -D thenshim_js_fallback_allSettled -D thenshim_js_fallback_finally
   - haxe hxml/test_adapter.js.hxml
   - ./out/cpp/TestAll-debug
   - LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH" hl out/hl/test.hl

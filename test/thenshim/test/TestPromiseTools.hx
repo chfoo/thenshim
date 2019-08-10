@@ -133,6 +133,7 @@ class TestPromiseTools extends Test {
 
         promise.catch_(reason -> {
             Assert.fail();
+            return 1;
         }).then(value -> { throw 2; })
         .catch_(reason -> {
             try {
