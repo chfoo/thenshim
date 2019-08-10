@@ -21,3 +21,5 @@ libs.hxml
 -xml out/xml/js.xml
 -js out/dummy.js
 --macro include('thenshim.js')
+-D thenshim_js_fallback_allSettled
+-D thenshim_js_fallback_finally

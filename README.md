@@ -100,6 +100,10 @@ By default, the task is called synchronously. You will need to implement and int
 
 On the JS target, `setImmediate` or `setTimeout` will be used for task scheduling. This implementation is intended for testing, as native promises should be used instead.
 
+### Additional methods
+
+Additional JavaScript-style promise methods are provided in `PromiseTools`. It is a static method extension class that can be used with the `using` keyword.
+
 ### Further reading
 
 API docs: https://chfoo.github.io/thenshim/api/

@@ -10,6 +10,7 @@ class TestAll {
             runner.addCase(new thenshim.test.fallback.TestPAPCompliance());
         #end
         runner.addCase(new thenshim.test.TestPromise());
+        runner.addCase(new thenshim.test.TestPromiseTools());
         Report.create(runner);
         runner.run();
     }

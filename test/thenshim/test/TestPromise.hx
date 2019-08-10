@@ -25,7 +25,7 @@ class TestPromise extends Test {
         };
     }
 
-    public function testResolve(async:utest.Async) {
+    public function testResolve(asyncTest:utest.Async) {
         var promiseMeta = newPromise();
 
         promiseMeta.promise.then((value:Int) -> {
@@ -43,12 +43,12 @@ class TestPromise extends Test {
 
         promiseMeta.promise.then(value -> {
             Assert.equals(123, value);
-            async.done();
+            asyncTest.done();
             return true;
         });
     }
 
-    public function testReject(async:utest.Async) {
+    public function testReject(asyncTest:utest.Async) {
         var promiseMeta = newPromise();
 
         promiseMeta.promise.then(
@@ -76,13 +76,13 @@ class TestPromise extends Test {
                 } catch(exception:Any) {
                     Assert.is(exception, MyException);
                 }
-                async.done();
+                asyncTest.done();
                 return true;
             }
         );
     }
 
-    public function testResolveException(async:utest.Async) {
+    public function testResolveException(asyncTest:utest.Async) {
         var promiseMeta = newPromise();
 
         promiseMeta.promise.then(value -> {
@@ -95,7 +95,7 @@ class TestPromise extends Test {
                 } catch(exception:Any) {
                     Assert.is(exception, MyException);
                 }
-                async.done();
+                asyncTest.done();
                 return true;
             }
         );
