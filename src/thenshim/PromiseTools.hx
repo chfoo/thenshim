@@ -19,6 +19,7 @@ class PromiseTools {
     public static function all<T>(promises:Iterable<Promise<T>>):
             Promise<Array<T>> {
         #if js
+        // cast required because the parameter type is Dynamic instead of T
         return cast js.lib.Promise.all(promises.array());
         #else
         var aggregatePromise = new Promise((resolve, reject) -> {
@@ -55,16 +56,23 @@ class PromiseTools {
      * Returns a promise that will be fulfilled with an array of outcome objects
      * when all of the given promises are settled.
      *
-     * Outcome objects are either `FulfilledOutcome` or `RejectedOutcome`. The
-     * `status` field is either `fulfilled` or `rejected`.
+     * The object will have fields:
+     *
+     * - `status` (`String`) either "fulfilled" or "rejected"
+     * - `value` (`T`) when `status` is "fulfilled"
+     * - `reason` when `status` is "rejected"
      *
      * If the method is not implemented on the JS target, use
      * `-D thenshim_js_fallback_allSettled` to enable a fallback implementation.
+     * Objects are either `FulfilledOutcome` or `RejectedOutcome`, but using
+     * reflection (`Reflect`) instead of casting is recommended for
+     * cross-target compatibility.
      */
     public static function allSettled<T>(promises:Iterable<Promise<T>>):
             Promise<Array<SettledOutcome<T>>> {
         #if (js && !thenshim_js_fallback_allSettled)
-        return cast js.lib.Promise.allSettled(promises.array());
+        //return cast js.lib.Promise.allSettled(promises.array());
+        return js.Syntax.code("Promise.allSettled({0})", promises.array());
         #else
         var aggregatePromise = new Promise((resolve, reject) -> {
             var promises_ = promises.array();
@@ -147,7 +155,8 @@ class PromiseTools {
     public static function finally<T>(promise:Promise<T>,
             onFinally:Void->Void):Promise<T> {
         #if (js && !thenshim_js_fallback_finally)
-        return (promise:js.lib.Promise<T>).onFinally(onFinally);
+        // return (promise:js.lib.Promise<T>).onFinally(onFinally);
+        return js.Syntax.code("{0}.finally({1})", promise, onFinally);
         #else
         return promise.then(value -> {
             onFinally();

@@ -66,9 +66,9 @@ class TestPromiseTools extends Test {
                 Assert.equals("fulfilled", value[0].status);
                 Assert.equals("rejected", value[1].status);
                 Assert.equals("fulfilled", value[2].status);
-                Assert.equals(1, (cast value[0]:FulfilledOutcome<Int>).value);
-                Assert.equals(2, (cast value[1]:RejectedOutcome<Int>).reason);
-                Assert.equals(3, (cast value[2]:FulfilledOutcome<Int>).value);
+                Assert.equals(1, Reflect.field(value[0], "value"));
+                Assert.equals(2, Reflect.field(value[1], "reason"));
+                Assert.equals(3, Reflect.field(value[2], "value"));
                 asyncTest.done();
             },
             reason -> {
