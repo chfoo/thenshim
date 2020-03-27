@@ -3,7 +3,7 @@ dist: xenial
 language: haxe
 
 haxe:
-  - "4.0.0-rc.3"
+  - "4.0.5"
 
 before_install:
   - sudo apt-get install -y nodejs
