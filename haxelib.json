@@ -4,9 +4,9 @@
     "license": "MIT",
     "tags": ["promise", "async"],
     "description": "Adapter/shim for cross-target JavaScript-style ('thenable') promises",
-    "version": "0.2.0",
+    "version": "1.0.0",
     "classPath": "src/",
-    "releasenote": "Add PromiseTools",
+    "releasenote": "Bump version to 1.0, no code changes",
     "contributors": ["chfoo"],
     "dependencies": {
     }
