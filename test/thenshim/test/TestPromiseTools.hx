@@ -145,6 +145,23 @@ class TestPromiseTools extends Test {
         });
     }
 
+    public function testCatchError(asyncTest:Async) {
+        var promise = Promise.resolve(1);
+
+        promise.catchError(reason -> {
+            Assert.fail();
+            return 1;
+        }).then(value -> { throw 2; })
+        .catchError(reason -> {
+            try {
+                throw reason;
+            } catch (exception:Any) {
+                Assert.equals(2, exception);
+            }
+            asyncTest.done();
+        });
+    }
+
     public function testFinally(asyncTest:Async) {
         var promise = Promise.resolve(1);
         var flags = [];

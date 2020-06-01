@@ -147,6 +147,16 @@ class PromiseTools {
     }
 
     /**
+     * Calls `then` with the `onRejected` callback.
+     *
+     * This is an alias for `PromiseTools.catch_`.
+     */
+    public static inline function catchError<T,R>(promise:Promise<T>,
+            onRejected:ThenableCallback<Any,Null<R>>):Promise<Null<R>> {
+        return catch_(promise, onRejected);
+    }
+
+    /**
      * Calls a callback when the given promise settles.
      *
      * If the method is not implemented on the JS target, use

@@ -1,6 +1,11 @@
 Changelog
 =========
 
+Unreleased
+----------
+
+* Added `PromiseTools.catchError()`
+
 1.0.0 (2020-03-27)
 ------------------
 
