@@ -1,10 +1,10 @@
 Changelog
 =========
 
-Unreleased
-----------
+1.1.0 (2020-06-02)
+------------------
 
-* Added `PromiseTools.catchError()`
+* Added `PromiseTools.catchError()` as alias to `PromiseTools.catch_()`
 
 1.0.0 (2020-03-27)
 ------------------
