@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.1.1 (2020-06-24)
+------------------
+
+* Fixed handling of resolving strings that didn't work on some targets (#2)
+
 1.1.0 (2020-06-02)
 ------------------
 
