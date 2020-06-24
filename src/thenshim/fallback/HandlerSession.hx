@@ -80,8 +80,8 @@ class HandlerSession {
 
         if (Std.is(value, Thenable)) {
             resolvePromiseThenable(promise, value);
-        } else
-        if (Reflect.isObject(value) || Reflect.isFunction(value)) {
+        } else if (!Std.is(value, String)
+                && (Reflect.isObject(value) || Reflect.isFunction(value))) {
             resolvePromiseObject(promise, value);
         } else {
             promise.resolve(value);

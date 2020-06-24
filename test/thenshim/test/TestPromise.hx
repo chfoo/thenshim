@@ -8,6 +8,10 @@ class MyException {
     }
 }
 
+class MyClass {
+    public function new() {}
+}
+
 class TestPromise extends Test {
     function newPromise<T>():{promise:Promise<T>, resolve:T->Void, reject:Any->Void} {
         var resolve;
@@ -36,6 +40,9 @@ class TestPromise extends Test {
             return Promise.resolve("abc");
         }).then((value:String) -> {
             Assert.equals("abc", value);
+            return new MyClass();
+        }).then((value:MyClass) -> {
+            Assert.is(value, MyClass);
             return true;
         });
 
@@ -43,6 +50,12 @@ class TestPromise extends Test {
 
         promiseMeta.promise.then(value -> {
             Assert.equals(123, value);
+            return "def";
+        }).then(value -> {
+            Assert.equals("def", value);
+            return new MyClass();
+        }).then(value -> {
+            Assert.is(value, MyClass);
             asyncTest.done();
             return true;
         });
