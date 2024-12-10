@@ -1,0 +1,42 @@
+name: Tests
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Haxe
+        uses: krdlab/setup-haxe@v1
+        with:
+          haxe-version: 4.3.6
+      - name: Install Hashlink
+        uses: cedx/setup-hashlink@v6
+      - name: Install Haxe libraries
+        run: |
+          haxelib setup haxelib/
+          yes | haxelib install hxcpp
+          yes | haxelib install hashlink
+          yes | haxelib install test.hxml
+      - name: Install JS libraries
+        run: npm install promises-aplus-tests
+      - name: Build project
+        run: |
+          haxe hxml/test.cpp.hxml
+          haxe hxml/test.hl.hxml
+          haxe hxml/test.js.hxml -D thenshim_js_fallback_allSettled -D thenshim_js_fallback_finally
+          haxe hxml/test_adapter.js.hxml
+      - name: Run tests
+        run: |
+          ./out/cpp/TestAll-debug
+          hl out/hl/test.hl
+          nodejs out/js/test.js
+          nodejs node_modules/promises-aplus-tests/lib/cli.js out/js/test_adapter.js
