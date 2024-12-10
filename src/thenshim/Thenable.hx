@@ -39,9 +39,9 @@ interface Thenable<T> {
  * On JS, this unifies to `js.lib.Promise.PromiseHandler`.
  */
 abstract ThenableCallback<T,R>(T->Dynamic)
-    from T->R
     from T->Thenable<R>
-    from T->Promise<R> {
+    from T->Promise<R>
+    from T->R {
 // Exclude cast from dox due to haxe bug #7829
 #if (js && !doc_gen)
     // Any/Dynamic don't unify properly yet, so we have to use cast for now

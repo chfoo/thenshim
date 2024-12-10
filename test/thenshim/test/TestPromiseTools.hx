@@ -175,9 +175,11 @@ class TestPromiseTools extends Test {
             flags.push(2);
         }).then(value -> {
             Assert.fail();
+            return true;
         }, reason -> {
             Assert.equals(2, reason);
             asyncTest.done();
+            return true;
         });
     }
 }

@@ -17,12 +17,12 @@ typedef PromiseExecutor<T> = (resolve:T->Void, reject:Any->Void)->Void;
  * Abstract class that unifies with values, `Thenable`, and `Promise`.
  */
 abstract ValueOrPromiseLike<T>(Dynamic)
-    from T
     from Thenable<T>
     from Promise<T>
-    to T
+    from T
     to Thenable<T>
     to Promise<T>
+    to T
 {}
 
 /**
