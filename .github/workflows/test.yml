@@ -29,15 +29,19 @@ jobs:
           yes | haxelib install test.hxml
       - name: Install JS libraries
         run: npm install promises-aplus-tests
-      - name: Build project
-        run: |
-          haxe hxml/test.cpp.hxml
-          haxe hxml/test.hl.hxml
-          haxe hxml/test.js.hxml -D thenshim_js_fallback_allSettled -D thenshim_js_fallback_finally
-          haxe hxml/test_adapter.js.hxml
-      - name: Run tests
-        run: |
-          ./out/cpp/TestAll-debug
-          hl out/hl/test.hl
-          nodejs out/js/test.js
-          nodejs node_modules/promises-aplus-tests/lib/cli.js out/js/test_adapter.js
+      - name: Build project (js)
+        run: haxe hxml/test.js.hxml -D thenshim_js_fallback_allSettled -D thenshim_js_fallback_finally
+      - name: Build project (js adapter)
+        run: haxe hxml/test_adapter.js.hxml
+      - name: Build project (cpp)
+        run: haxe hxml/test.cpp.hxml
+      - name: Build project (hl)
+        run: haxe hxml/test.hl.hxml
+      - name: Run tests (js)
+        run: nodejs out/js/test.js
+      - name: Run tests (js promise/a+)
+        run: nodejs node_modules/promises-aplus-tests/lib/cli.js out/js/test_adapter.js
+      - name: Run tests (cpp)
+        run: ./out/cpp/TestAll-debug
+      - name: Run tests (hl)
+        run: hl out/hl/test.hl
