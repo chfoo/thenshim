@@ -23,10 +23,9 @@ jobs:
         uses: cedx/setup-hashlink@v6
       - name: Install Haxe libraries
         run: |
-          haxelib setup haxelib/
-          yes | haxelib install hxcpp
-          yes | haxelib install hashlink
-          yes | haxelib install test.hxml
+          haxelib install --always hxcpp
+          haxelib install --always hashlink
+          haxelib install --always test.hxml
       - name: Install JS libraries
         run: npm install promises-aplus-tests
       - name: Build project (js)

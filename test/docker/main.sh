@@ -4,9 +4,9 @@ set -e
 
 echo Install Haxe libraries
 haxelib setup /home/ubuntu/haxelib/
-yes | haxelib install hxcpp
-yes | haxelib install hashlink
-yes | haxelib install test.hxml
+haxelib install --always hxcpp
+haxelib install --always hashlink
+haxelib install --always test.hxml
 
 echo Install JS libraries
 npm install promises-aplus-tests

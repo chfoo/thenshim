@@ -3,7 +3,7 @@ FROM ubuntu:24.04
 RUN apt-get update && apt-get install --yes software-properties-common build-essential wget nodejs npm
 
 # Install Haxe
-RUN apt-add-repository --yes -S deb https://ppa.launchpadcontent.net/haxe/releases/ubuntu noble main \
+RUN apt-add-repository --yes ppa:haxe/releases \
     && apt-get install --yes haxe
 
 # Install HashLink dependencies
