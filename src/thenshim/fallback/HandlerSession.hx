@@ -78,9 +78,9 @@ class HandlerSession {
             return;
         }
 
-        if (Std.is(value, Thenable)) {
+        if (Std.isOfType(value, Thenable)) {
             resolvePromiseThenable(promise, value);
-        } else if (!Std.is(value, String)
+        } else if (!Std.isOfType(value, String)
                 && (Reflect.isObject(value) || Reflect.isFunction(value))) {
             resolvePromiseObject(promise, value);
         } else {

@@ -22,9 +22,9 @@ class FallbackPromiseFactory implements PromiseFactory {
     }
 
     public function asResolved<T>(object:ValueOrPromiseLike<T>):Thenable<T> {
-        if (Std.is(object, FallbackPromise)) {
+        if (Std.isOfType(object, FallbackPromise)) {
             return object;
-        } else if (Std.is(object, Thenable)) {
+        } else if (Std.isOfType(object, Thenable)) {
             return asResolvedThenable(object);
         }
 

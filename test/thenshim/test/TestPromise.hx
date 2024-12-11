@@ -42,7 +42,7 @@ class TestPromise extends Test {
             Assert.equals("abc", value);
             return new MyClass();
         }).then((value:MyClass) -> {
-            Assert.is(value, MyClass);
+            Assert.isOfType(value, MyClass);
             return true;
         });
 
@@ -55,7 +55,7 @@ class TestPromise extends Test {
             Assert.equals("def", value);
             return new MyClass();
         }).then(value -> {
-            Assert.is(value, MyClass);
+            Assert.isOfType(value, MyClass);
             asyncTest.done();
             return true;
         });
@@ -73,7 +73,7 @@ class TestPromise extends Test {
                 try {
                     throw reason;
                 } catch(exception:Any) {
-                    Assert.is(exception, MyException);
+                    Assert.isOfType(exception, MyException);
                 }
                 return true;
             }
@@ -87,7 +87,7 @@ class TestPromise extends Test {
                 try {
                     throw reason;
                 } catch(exception:Any) {
-                    Assert.is(exception, MyException);
+                    Assert.isOfType(exception, MyException);
                 }
                 asyncTest.done();
                 return true;
@@ -106,7 +106,7 @@ class TestPromise extends Test {
                 try {
                     throw reason;
                 } catch(exception:Any) {
-                    Assert.is(exception, MyException);
+                    Assert.isOfType(exception, MyException);
                 }
                 asyncTest.done();
                 return true;
