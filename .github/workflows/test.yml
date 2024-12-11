@@ -37,9 +37,9 @@ jobs:
       - name: Build project (hl)
         run: haxe hxml/test.hl.hxml
       - name: Run tests (js)
-        run: nodejs out/js/test.js
+        run: node out/js/test.js
       - name: Run tests (js promise/a+)
-        run: nodejs node_modules/promises-aplus-tests/lib/cli.js out/js/test_adapter.js
+        run: node node_modules/promises-aplus-tests/lib/cli.js out/js/test_adapter.js
       - name: Run tests (cpp)
         run: ./out/cpp/TestAll-debug
       - name: Run tests (hl)
