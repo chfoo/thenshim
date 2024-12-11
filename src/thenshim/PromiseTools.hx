@@ -137,9 +137,8 @@ class PromiseTools {
      */
     public static function catch_<T,R>(promise:Promise<T>,
             onRejected:ThenableCallback<Any,Null<R>>):Promise<Null<R>> {
-        #if js
-        // cast due to bug in Thenable
-        return (promise:js.lib.Promise<T>).catchError(#if doc_gen cast #end onRejected);
+        #if (js && !doc_gen)
+        return (promise:js.lib.Promise<T>).catchError(onRejected);
         #else
         @:nullSafety(Off)
         return promise.then(value -> (null:Null<R>), onRejected);

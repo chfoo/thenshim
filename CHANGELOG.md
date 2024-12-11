@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.1.2 (2024-12-11)
+------------------
+
+* Fixed compile error related to types (Haxe 4.3 compatibility)
+
 1.1.1 (2020-06-24)
 ------------------
 
